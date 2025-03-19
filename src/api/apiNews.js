@@ -7,6 +7,7 @@ export const getNews = async ({
   page_number = 1,
   page_size = 10,
   category,
+  keywords
 }) => {
   try {
     const response = await axios.get(`${BASE_URL}search`, {
@@ -15,6 +16,7 @@ export const getNews = async ({
         page_number,
         page_size,
         category,
+        keywords  
       },
     });
     return response.data;
@@ -25,7 +27,7 @@ export const getNews = async ({
 
 export const getCategories = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}avaliable/categories`, {
+    const response = await axios.get(`${BASE_URL}available/categories`, {
       params: {
         apiKey: API_KEY,
       },
