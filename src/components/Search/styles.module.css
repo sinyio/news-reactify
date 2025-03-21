@@ -1,6 +1,16 @@
 .search {
   display: flex;
   width: 100%;
+  background-color: white;
+  gap: 12px;
+}
+
+.light {
+  background-color: white;
+}
+
+.dark {
+  background-color: #23272f;
 }
 
 .input {
