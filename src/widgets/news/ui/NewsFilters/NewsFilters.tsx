@@ -5,24 +5,25 @@ import Slider from "@/features/slider/ui/Slider/Slider";
 import { IFilters } from "@/shared/interfaces";
 import { setFilters } from "@/entities/news/model/newsSlice";
 import styles from "./styles.module.css";
-import { useGetCategoriesQuery } from "@/entities/categories/api/api";
 import { Categories } from "@/features/categories";
+import { CategoriesType } from "@/entities/categories";
 
 interface Props {
   filters: IFilters;
+  categories?: CategoriesType[];
 }
 
-const NewsFilters = ({ filters }: Props) => {
+const NewsFilters = ({ filters, categories }: Props) => {
   const { isDark } = useTheme();
-  const { data: dataCategories } = useGetCategoriesQuery(null);
+
   const dispatch = useAppDispatch();
 
   return (
     <div className={styles.filters}>
-      {dataCategories && (
+      {categories && (
         <Slider isDark={isDark}>
           <Categories
-            categories={dataCategories.categories}
+            categories={categories}
             setSelectedCategory={(category) =>
               dispatch(setFilters({ key: "category", value: category }))
             }
